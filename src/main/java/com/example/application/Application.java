@@ -1,7 +1,9 @@
 package com.example.application;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,7 +15,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@Theme(value = "flowcrmtutorial")
+@Theme(variant = Lumo.LIGHT)
+@PWA(
+        name = "Contact List",
+        shortName = "Contacts",
+        offlinePath= "META-INF/resources/offline.html",
+        offlineResources = { "images/offline.png" }
+)
 public class Application implements AppShellConfigurator {
 
     public static void main(String[] args) {
