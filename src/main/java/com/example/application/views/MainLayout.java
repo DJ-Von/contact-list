@@ -1,7 +1,9 @@
 package com.example.application.views;
 
 import com.example.application.security.SecurityService;
-import com.example.application.views.list.ListView;
+import com.example.application.views.list.ContactView;
+import com.example.application.views.list.StatusView;
+import com.example.application.views.list.CompanyView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
@@ -34,11 +36,19 @@ public class MainLayout extends AppLayout {
         addToNavbar(header);
     }
     private void CreateDrawer() {
-        RouterLink listView = new RouterLink("List", ListView.class);
+        RouterLink listView = new RouterLink("List", ContactView.class);
         listView.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink statusView = new RouterLink("Statuses", StatusView.class);
+        statusView.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink companyView = new RouterLink("Companies", CompanyView.class);
+        companyView.setHighlightCondition(HighlightConditions.sameLocation());
 
         addToDrawer(new VerticalLayout(
                 listView,
+                statusView,
+                companyView,
                 new RouterLink("Dashboard", DashBoardView.class)
         ));
     }
